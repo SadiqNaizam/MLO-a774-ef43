@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -19,6 +20,7 @@ export default {
 		},
 		extend: {
 			colors: {
+        // Shadcn UI style color definitions using CSS variables
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -52,6 +54,21 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+        // Custom color for the overall application layout background
+        appLayoutBackground: 'hsl(var(--app-layout-background))',
+        // Direct PRD color palette (hex values for easy reference or specific usage)
+        prd: {
+          background: '#E9EBEE',
+          surface: '#FFFFFF',
+          sidebar: '#3B5998',
+          header: '#4267B2',
+          primaryText: '#1C1E21',
+          secondaryText: '#606770',
+          linkText: '#1877F2',
+          buttonBackground: '#F5F6F7',
+          border: '#DADDE1',
+        },
+        // Sidebar specific theme colors using CSS variables
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -64,10 +81,18 @@ export default {
 				}
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+        // Values based on --radius CSS variable (0.375rem / 6px as per PRD 'rounded-md')
+				lg: 'var(--radius)',                 // 0.375rem (6px)
+				md: 'calc(var(--radius) - 2px)',   // 4px
+				sm: 'calc(var(--radius) - 4px)'    // 2px
 			},
+      fontFamily: {
+        sans: ['Helvetica', 'Arial', ...defaultTheme.fontFamily.sans],
+      },
+      boxShadow: {
+        // PRD specifies 'shadow-md' as the default shadow
+        DEFAULT: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)', // Tailwind's shadow-md definition
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
@@ -92,5 +117,8 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography") // Added as per dependencies list
+  ],
 } satisfies Config;
