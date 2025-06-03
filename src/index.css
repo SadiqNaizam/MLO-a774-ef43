@@ -4,54 +4,56 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* PRD Mappings to Shadcn Variables */
+    --background: 0 0% 100%;             /* #FFFFFF (PRD Surface), for components like cards */
+    --foreground: 220 8% 12%;            /* #1C1E21 (PRD PrimaryText) */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;                   /* alias for --background */
+    --card-foreground: 220 8% 12%;       /* alias for --foreground */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;                /* alias for --background */
+    --popover-foreground: 220 8% 12%;    /* alias for --foreground */
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 221 44% 48%;              /* #4267B2 (PRD Header color) */
+    --primary-foreground: 0 0% 100%;     /* White text on primary */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 17% 96.5%;          /* #F5F6F7 (PRD ButtonBackground) */
+    --secondary-foreground: 220 8% 12%;  /* #1C1E21 (PRD PrimaryText, for text on secondary bg) */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 17% 96.5%;              /* Using PRD ButtonBackground (#F5F6F7), similar to original muted (210 40% 96.1%) */
+    --muted-foreground: 219 7% 41%;      /* #606770 (PRD SecondaryText) */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 217 89% 52%;               /* #1877F2 (PRD LinkText) */
+    --accent-foreground: 0 0% 100%;      /* White text, if accent is used as a background */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;        /* Original - No PRD Spec */
+    --destructive-foreground: 210 40% 98%; /* Original - No PRD Spec */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 12% 87%;               /* #DADDE1 (PRD Border) */
+    --input: 220 12% 87%;                /* alias for --border for input borders */
+    --ring: 217 89% 52%;                 /* #1877F2 (PRD LinkText, for focus rings) */
 
-    --radius: 0.5rem;
+    --radius: 0.375rem;                  /* PRD: rounded-md (6px) */
 
-    --sidebar-background: 0 0% 98%;
+    /* Custom variable for the overall page body background, distinct from component backgrounds */
+    --app-layout-background: 220 13% 92.4%; /* #E9EBEE (PRD Background color) */
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar specific variables from existing setup, updated per PRD or for consistency */
+    --sidebar-background: 225 46% 41%;    /* #3B5998 (PRD Sidebar color) */
+    --sidebar-foreground: 0 0% 100%;       /* White text on sidebar background */
+    
+    /* Retaining original HSL for sub-theme elements not specified in PRD to minimize breaking changes to existing sidebar components */
+    --sidebar-primary: 240 5.9% 10%;      /* Original */
+    --sidebar-primary-foreground: 0 0% 98%;/* Original */
+    --sidebar-accent: 240 4.8% 95.9%;     /* Original */
+    --sidebar-accent-foreground: 240 5.9% 10%;/* Original */
+    --sidebar-border: 220 12% 87%;        /* Aligned with main theme's --border for consistency */
+    --sidebar-ring: 217 89% 52%;          /* Aligned with main theme's --ring for consistency */
   }
 
   .dark {
+    /* Original dark mode values are preserved unless directly overridden by PRD (none specified for dark) */
+    /* or if variable names/structure changed, requiring their dark counterparts to match. */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
@@ -70,7 +72,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 217.2 32.6% 17.5%; 
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -78,24 +80,34 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --ring: 212.7 26.8% 83.9%; 
+
+    /* Custom var for the overall page body background in dark mode */
+    --app-layout-background: 222.2 84% 4.9%; /* Example: using the existing dark --background value */
+
+    /* Sidebar specific variables in dark mode */
+    --sidebar-background: 240 5.9% 10%;    /* Original dark sidebar background, PRD doesn't specify dark variant */
+    --sidebar-foreground: 240 4.8% 95.9%;   /* Original dark sidebar foreground */
+
+    --sidebar-primary: 224.3 76.3% 48%;     /* Original */
+    --sidebar-primary-foreground: 0 0% 100%;/* Original */
+    --sidebar-accent: 240 3.7% 15.9%;      /* Original */
+    --sidebar-accent-foreground: 240 4.8% 95.9%;/* Original */
+    --sidebar-border: 217.2 32.6% 17.5%;   /* Aligned with dark main theme's --border */
+    --sidebar-ring: 212.7 26.8% 83.9%;     /* Aligned with dark main theme's --ring */
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border; /* Uses Tailwind's 'border' color, which maps to hsl(var(--border)) */
   }
-
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--app-layout-background));
+    color: hsl(var(--foreground));
+    /* font-family is typically applied via a 'font-sans' class on the <html> or <body> tag 
+       in the HTML markup, configured in tailwind.config.ts */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
